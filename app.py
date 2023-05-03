@@ -1,4 +1,3 @@
-#import chat_gpt_api as gpt
 import prompts as pr
 import streamlit as st
 from langchain import PromptTemplate
