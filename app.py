@@ -1,9 +1,22 @@
-import chat_gpt_api as gpt
+#import chat_gpt_api as gpt
 import prompts as pr
 import streamlit as st
 from langchain import PromptTemplate
 from langchain.llms import OpenAI
 import os
+import openai
+
+selected_model = "gpt-3.5-turbo"
+
+def basic_generation(user_prompt):
+    completion = openai.ChatCompletion.create(
+        model=selected_model,
+        messages=[
+            {"role": "user", "content": user_prompt}
+        ]
+    )
+    response = completion.choices[0].message.content
+    return response
 
 def load_LLM(openai_api_key):
     """Logic for loading the chain you want to use should go here."""
