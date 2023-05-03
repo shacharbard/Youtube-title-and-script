@@ -1,4 +1,3 @@
-#import chat_gpt_api as gpt
 import prompts as pr
 import streamlit as st
 from langchain import PromptTemplate
@@ -61,7 +60,7 @@ if openai_api_key:
     
     #step 2: Generate 10 Catchy Title Ideas
     titles_prompt = pr.youtube_title_generator_prompt.format(topic=user_topic)
-    titles = gpt.basic_generation(titles_prompt)
+    titles = basic_generation(titles_prompt)
     st.write("**Titles Ideas:**")
     st.write("----------------")
     st.write(titles)
@@ -69,7 +68,7 @@ if openai_api_key:
 
     #step 3: Generate Catchy Thumbnail Ideas
     thumbnail_prompt = pr.youtube_thumbmail_generator_prompt.format(user_titles=titles)
-    thumbnails = gpt.basic_generation(thumbnail_prompt)
+    thumbnails = basic_generation(thumbnail_prompt)
     st.write("**Thumbnail Ideas:**")
     st.write("----------------")
     st.write(thumbnails)
@@ -77,7 +76,7 @@ if openai_api_key:
 
     #step 4: script
     script_prompt = pr.youtube_script_generator_prompt.format(minutes=user_minutes,topic=user_topic)
-    script = gpt.basic_generation(script_prompt)
+    script = basic_generation(script_prompt)
     st.write("**Suggested Script:**")
     st.write("----------------")
     st.write(script)
@@ -85,7 +84,7 @@ if openai_api_key:
 
     #step 5: Into a twitter thread
     tweet_prompt = pr.tweet_from_youtube_prompt.format(youtube_transcript=script)
-    tweet = gpt.basic_generation(tweet_prompt)
+    tweet = basic_generation(tweet_prompt)
     st.write("**Twitter Thread:**")
     st.write("----------------")
     st.write(tweet)
