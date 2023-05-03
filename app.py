@@ -18,6 +18,10 @@ def basic_generation(user_prompt):
     response = completion.choices[0].message.content
     return response
 
+def get_api_key():
+    input_text = st.text_input(label="OpenAI API Key",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key")
+    return input_text
+
 def load_LLM(openai_api_key):
     """Logic for loading the chain you want to use should go here."""
     # Make sure your openai_api_key is set as an environment variable
@@ -45,9 +49,6 @@ user_topic = st.text_input(label="Please enter your video topic: ",  placeholder
 
 user_minutes= st.text_input(label="Please enter your video length (in minutes): ",  placeholder="Length")
 
-def get_api_key():
-    input_text = st.text_input(label="OpenAI API Key",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key_input")
-    return input_text
 
 openai_api_key = get_api_key()
 st.write("\n")
