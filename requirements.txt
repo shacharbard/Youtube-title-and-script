@@ -1,4 +1,0 @@
-chat_gpt_api
-prompts
-streamlit
-langchain
