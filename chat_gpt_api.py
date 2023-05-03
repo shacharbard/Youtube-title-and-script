@@ -1,6 +1,5 @@
 import openai
 
-
 # openai.api_key = ""
 selected_model = "gpt-3.5-turbo"
 
