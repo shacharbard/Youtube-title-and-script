@@ -1,6 +1,6 @@
 import openai
 
-# openai.api_key = ""
+openai.api_key = ""
 selected_model = "gpt-3.5-turbo"
 
 def basic_generation(user_prompt):
