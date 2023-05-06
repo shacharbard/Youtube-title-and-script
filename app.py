@@ -39,18 +39,19 @@ with col1:
 with col2:
     st.image(image='Youtube title and script generator.png', width=300, caption='generated with Microsoft Designer')
     
+# generating a sidebar for indserting the parameters
+st.sidebar.header('Input')
 #step 1: Enter a Topic
-user_topic = st.text_input(label="Please enter your video topic: ",  placeholder="Topic")
-
-user_minutes= st.text_input(label="Please enter your video length (in minutes): ",  placeholder="Length")
+user_topic = st.sidebar.text_input(label="Please enter your video topic: ",  placeholder="Topic")
+user_minutes= st.sidebar.text_input(label="Please enter your video length (in minutes): ",  placeholder="Length")
 
 def get_api_key():
-    input_text = st.text_input(label="OpenAI API Key",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key")
+    input_text = st.sidebar.text_input(label="OpenAI API Key",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key")
     return input_text
 
 openai_api_key = get_api_key()
 st.write("\n")
-button = st.button("Go!")
+button = st.sidebar.button("Go!")
 
 if openai_api_key:
     llm = load_LLM(openai_api_key=openai_api_key)
@@ -92,5 +93,5 @@ if openai_api_key:
     st.write("----------------")
 
 else:
-    st.warning('Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
+    st.sidebar.warning('Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
     st.stop()
