@@ -31,7 +31,7 @@ st.write("\n")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("##### Don't spend hours trying to generate your YT titles, and scripts. \n ##### This tool is designed to help you generate those ideas, and much more, quickly and easily!")
+    st.markdown("##### Don't spend hours trying to generate your YT titles, and scripts. \n ##### This tool is designed to help you generate those ideas, and much more, fast and easy!")
     st.write("\n")
     st.write("\n")
     st.image(image='look down.png', width=100, caption='')
@@ -59,7 +59,6 @@ if openai_api_key:
     st.write("#### this process may take a few minutes, so please wait...")
     st.write("The AI agent will generate a catchy title first, then it will use the title to generate a thumbnail. \n Next, it will use the title to generate a script... \n and then it will generate a twitter thread from the script. \n")
 
-    
     #step 2: Generate 10 Catchy Title Ideas
     titles_prompt = pr.youtube_title_generator_prompt.format(topic=user_topic)
     titles = basic_generation(titles_prompt)
@@ -93,5 +92,5 @@ if openai_api_key:
     st.write("----------------")
 
 else:
-    st.sidebar.warning('Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
+    st.sidebar.write('☝️ Enter Your OpenAI-API-Key and press Go! Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
     st.stop()
