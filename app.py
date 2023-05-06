@@ -4,6 +4,8 @@ import prompts as pr
 from langchain.llms import OpenAI
 #import os
 import openai
+import time
+
 
 selected_model = "gpt-3.5-turbo"
 
@@ -38,11 +40,12 @@ with col1:
 
 with col2:
     st.image(image='Youtube title and script generator.png', width=300, caption='generated with Microsoft Designer')
-    
-# generating a sidebar for indserting the parameters
+
+
 st.sidebar.header('Input')
 #step 1: Enter a Topic
 user_topic = st.sidebar.text_input(label="Please enter your video topic: ",  placeholder="Topic")
+
 user_minutes= st.sidebar.text_input(label="Please enter your video length (in minutes): ",  placeholder="Length")
 
 def get_api_key():
@@ -51,9 +54,13 @@ def get_api_key():
 
 openai_api_key = get_api_key()
 st.write("\n")
+
 button = st.sidebar.button("Go!")
 
 if openai_api_key:
+    text_content = '''Here are your results\n'''
+    text_content = text_content + '\n' 
+    st.write("\n")
     llm = load_LLM(openai_api_key=openai_api_key)
     st.markdown("### Here is everything you need for your next Youtube video: ")
     st.write("#### this process may take a few minutes, so please wait...")
@@ -64,7 +71,12 @@ if openai_api_key:
     titles = basic_generation(titles_prompt)
     st.write("**Titles Ideas:**")
     st.write("----------------")
-    st.write(titles)
+    text_content = text_content + '\n'
+    text_content = text_content + 'Titles Ideas:\n'
+    text_content = text_content + '\n' 
+    text_content = text_content + titles + '\n'
+    text_content = text_content + '\n' 
+    st.markdown(titles)
     st.write("----------------")
 
     #step 3: Generate Catchy Thumbnail Ideas
@@ -72,6 +84,10 @@ if openai_api_key:
     thumbnails = basic_generation(thumbnail_prompt)
     st.write("**Thumbnail Ideas:**")
     st.write("----------------")
+    text_content = text_content + 'Thumbnail Ideas:\n'
+    text_content = text_content + '\n' 
+    text_content = text_content + thumbnails + '\n'
+    text_content = text_content + '\n'
     st.write(thumbnails)
     st.write("----------------")
 
@@ -80,6 +96,10 @@ if openai_api_key:
     script = basic_generation(script_prompt)
     st.write("**Suggested Script:**")
     st.write("----------------")
+    text_content = text_content + 'Suggested Script:\n'
+    text_content = text_content + '\n' 
+    text_content = text_content + script + '\n'
+    text_content = text_content + '\n'
     st.write(script)
     st.write("----------------")
 
@@ -88,8 +108,14 @@ if openai_api_key:
     tweet = basic_generation(tweet_prompt)
     st.write("**Twitter Thread:**")
     st.write("----------------")
+    text_content = text_content + 'Twitter Thread:\n'
+    text_content = text_content + '\n'
+    text_content = text_content + tweet + '\n'
+    text_content = text_content + '\n'
     st.write(tweet)
     st.write("----------------")
+
+    st.download_button('Download', text_content, file_name='Your_Results.txt')
 
 else:
     st.sidebar.write('☝️ Enter Your OpenAI-API-Key and press Go! Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
