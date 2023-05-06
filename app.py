@@ -41,6 +41,8 @@ with col1:
 with col2:
     st.image(image='Youtube title and script generator.png', width=300, caption='generated with Microsoft Designer')
 
+st.write('If you are using your phone, press the small arrow > in the uppr left corner\
+         to open the side bar and insert the parameters')
 
 st.sidebar.header('Input')
 #step 1: Enter a Topic
