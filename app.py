@@ -28,7 +28,7 @@ def load_LLM(openai_api_key):
 
 st.set_page_config(page_title="YouTube Title & Video Script Generator", page_icon=":robot:")
 st.header("YouTube Title & Video Script Generator")
-st.write("### **This tool generates a YouTube video title, thumbnails prompts, script, and a Twitter thread based on the topic you enter.**")
+st.write("### **This tool generates a YouTube video title, thumbnail prompts, script, and a Twitter thread based on the topic you enter.**")
 st.write("\n")
 col1, col2 = st.columns(2)
 
