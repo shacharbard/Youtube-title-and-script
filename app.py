@@ -50,6 +50,7 @@ def get_api_key():
 
 openai_api_key = get_api_key()
 st.write("\n")
+button = st.button("Go!")
 
 if openai_api_key:
     llm = load_LLM(openai_api_key=openai_api_key)
